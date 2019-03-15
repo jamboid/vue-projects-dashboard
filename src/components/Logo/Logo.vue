@@ -7,6 +7,6 @@
     </header>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
   @import 'Logo.scss';
 </style>
