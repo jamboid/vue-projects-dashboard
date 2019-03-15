@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Logo></Logo>
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
@@ -7,11 +8,15 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
+import Logo from './components/Logo/Logo.vue';
+import getJSON from './modules/API';
+import buildGithubAPIQuery from './modules/QueryBuilder';
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
+    Logo,
   },
 };
 </script>
@@ -22,7 +27,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $clrDarkGrey;
   margin-top: 60px;
 }
 </style>
