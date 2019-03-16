@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <Logo></Logo>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SearchForm helperText="Enter a username..."></SearchForm>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
 import Logo from './components/Logo/Logo.vue';
+import SearchForm from './components/SearchForm/SearchForm.vue';
 import getJSON from './modules/API';
 import buildGithubAPIQuery from './modules/QueryBuilder';
 
@@ -17,6 +17,7 @@ export default {
   components: {
     HelloWorld,
     Logo,
+    SearchForm,
   },
 };
 </script>
