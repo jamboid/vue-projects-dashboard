@@ -38,6 +38,7 @@ export default {
         this.queryResults = [];
       }
     },
+
     searchAPI: function () {
       if(this.username !== '') {
         getJSON(buildGithubAPIQuery(this.username))
