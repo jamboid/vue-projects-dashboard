@@ -16,12 +16,6 @@ import ResultsList from './components/ResultsList/ResultsList.vue';
 import getJSON from './modules/API';
 import buildGithubAPIQuery from './modules/QueryBuilder';
 
-
-
-function handleSearchChange (username) {
-  this.setState({'username': username});
-}
-
 export default {
   name: 'app',
   components: {
@@ -46,10 +40,8 @@ export default {
     },
     searchAPI: function () {
       if(this.username !== '') {
-        console.log('start search...');
         getJSON(buildGithubAPIQuery(this.username))
         .then(results => {
-          console.log(results);
           this.queryResults = results;
         })
         .catch((err) => {

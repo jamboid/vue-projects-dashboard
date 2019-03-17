@@ -14,12 +14,7 @@ export default {
   },
   props: [
     'results',
-  ],
-  data: function () {
-    return {
-
-    }
-  }
+  ]
 }
 </script>
 

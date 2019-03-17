@@ -19,12 +19,7 @@ export default {
   name:"RepoCard",
   props: [
     'repoData'
-  ],
-  data: function () {
-    return {
-
-    }
-  }
+  ]
 }
 </script>
 

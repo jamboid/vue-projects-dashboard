@@ -18,11 +18,14 @@
   }
 
   &__title {
+    font-size:em(20);
+    font-weight: $bold;
     margin:0;
     color:$clrGrey;
   }
 
   &__desc {
+    font-size:em(14);
     margin:em(5) 0 0;
     color:$clrLightGrey;
   }
@@ -52,7 +55,7 @@
     padding:em(5) em(20);
 
 
-    &:hover, &:focus, &:active {
+    &:hover, &:focus, &:active { 
       #{ $self }__linkIcon {
         opacity: 1;
         transform:scale(1);
