@@ -2,7 +2,7 @@
   <div id="app">
     <Logo></Logo>
     <SearchForm @submit-message="handleSubmit" helperText="Enter a username..."></SearchForm>
-    <ResultsList results="app.queryResults"></ResultsList>
+    <ResultsList :results=queryResults></ResultsList>
   </div>
 </template>
 
@@ -15,22 +15,6 @@ import getJSON from './modules/API';
 import buildGithubAPIQuery from './modules/QueryBuilder';
 
 
-function handleSearchSubmit () {
-  //this.setState({'username': username})
-  if(app.username !== '') {
-    console.log('start search...');
-    getJSON(buildGithubAPIQuery(app.username))
-    .then(results => {
-      app.queryResults = results;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-  } else {
-    app.queryResults = [];
-  }
-}
 
 function handleSearchChange (username) {
   this.setState({'username': username});
@@ -51,11 +35,29 @@ export default {
   },
   methods: {
     handleSubmit: function(event) {
-      if(event.length > 0) {
-        app.username = event;
-        handleSearchSubmit();
+      if(event !== undefined && event.length > 0) {
+        this.username = event;
+        this.searchAPI();
+      } else {
+        this.queryResults = [];
       }
     },
+    searchAPI: function () {
+      if(this.username !== '') {
+        console.log('start search...');
+        getJSON(buildGithubAPIQuery(this.username))
+        .then(results => {
+          console.log(results);
+          this.queryResults = results;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      } else {
+        this.queryResults = [];
+      }
+    }
   }
 };
 </script>

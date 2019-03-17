@@ -1,7 +1,6 @@
 <template>
-  <section class="cp_ResultsList">
-    <RepoCard>
-    ></RepoCard>
+  <section class="cp_ResultsList" v-show="results.length > 0">
+    <RepoCard v-for="result in results" :repoData="result" :key="result.id"></RepoCard>
   </section>
 </template>
 
@@ -13,6 +12,9 @@ export default {
   components: {
     RepoCard,
   },
+  props: [
+    'results',
+  ],
   data: function () {
     return {
 
