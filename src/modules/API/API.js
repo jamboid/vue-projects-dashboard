@@ -24,14 +24,15 @@ function handleContentType(response) {
 }
 
 function processData(rawData) {
-  console.log(rawData);
+  //console.log(rawData);
+
   const processedData = [];
 
   for (var i = 0; i < rawData.length; i++) {
     const rawRepo = rawData[i];
     const processedRepo = {};
 
-    console.log(rawRepo);
+    // console.log(rawRepo);
 
     processedRepo.id = rawRepo.id;
     processedRepo.name = rawRepo.name;

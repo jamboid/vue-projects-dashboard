@@ -1,11 +1,17 @@
 <template>
-  <form class="cp_SearchForm fx_Group" onSubmit={this.handleSubmit}>
-    <input class="cp_SearchForm__text" name="searchTerm" onChange={this.handleChange}       :placeholder="helperText" type="search" />
+  <form class="cp_SearchForm fx_Group" v-on:submit=handleFormSubmit>
+    <input class="cp_SearchForm__text" v-model="searchTerm" :placeholder="helperText" type="search" />
     <input class="cp_SearchForm__button" type="submit" value="Search" />
   </form>
 </template>
 
 <script>
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const mess = "Form submitted"
+  this.$emit('submit-message', this.searchTerm);
+}
+
 export default {
   name: "SearchForm",
   props: {
@@ -13,40 +19,18 @@ export default {
       type: String,
       required: false
     }
+  },
+  data: function () {
+    return {
+      searchTerm: this.searchTerm
+    }
+  },
+  methods: {
+    handleFormSubmit:handleFormSubmit
   }
 }
 </script>
 
-
 <style lang="scss" scoped>
-.cp_SearchForm {
-  margin:0 auto;
-  display:flex;
-  max-width:em(400);
-
-  &__text,
-  &__button {
-    font-size:em(18);
-    -webkit-appearance:none;
-    padding:em(8) em(15);
-    margin: 0;
-    box-shadow:none;
-    border:2px solid $clrBlue;
-  }
-
-  &__text {
-    flex:1 1 auto;
-    border-radius:5px 0 0 5px;
-  }
-
-  &__button {
-    flex:0 0 auto;
-    background:$clrBlue;
-    color:$clrWhite;
-    border-radius:0 5px 5px 0;
-    cursor: pointer;
-  }
-}
-
+  @import "./SearchForm.scss";
 </style>
-
