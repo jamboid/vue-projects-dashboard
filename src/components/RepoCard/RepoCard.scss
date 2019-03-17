@@ -26,9 +26,9 @@
     margin:em(5) 0 0;
     color:$clrLightGrey;
   }
-
+ 
   &__stars {
-    @include flexBase;
+    display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;

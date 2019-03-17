@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
-    <Logo></Logo>
-    <SearchForm @submit-message="handleSubmit" helperText="Enter a username..."></SearchForm>
+  <div id="app" class="cp_App">
+    <header class="cp_App__header">
+      <Logo></Logo>
+      <SearchForm @submit-message="handleSubmit" helperText="Enter a username..."></SearchForm>
+    </header>
     <ResultsList :results=queryResults></ResultsList>
   </div>
 </template>
@@ -63,12 +65,19 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  background:$clrOffWhite;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.cp_App {
   text-align: center;
-  color: $clrDarkGrey;
-  margin-top: 60px;
+
+  &__header {
+    background:$clrWhite;
+    padding:10px 0 em(40);
+  }
 }
 </style>
