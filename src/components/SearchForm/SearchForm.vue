@@ -6,11 +6,6 @@
 </template>
 
 <script>
-function handleFormSubmit(e) {
-  e.preventDefault();
-  const mess = "Form submitted"
-  this.$emit('submit-message', this.searchTerm);
-}
 
 export default {
   name: "SearchForm",
@@ -26,7 +21,10 @@ export default {
     }
   },
   methods: {
-    handleFormSubmit:handleFormSubmit
+    handleFormSubmit:function(e) {
+      e.preventDefault();
+      this.$emit('submit-message', this.searchTerm);
+    }
   }
 }
 </script>

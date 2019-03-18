@@ -58,19 +58,19 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  background:$clrOffWhite;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-
-.cp_App {
-  text-align: center;
-
-  &__header {
-    background:$clrWhite;
-    padding:10px 0 em(40);
+  body {
+    background:$clrOffWhite;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
   }
-}
+
+  .cp_App {
+    text-align: center;
+
+    &__header {
+      background:$clrWhite;
+      padding:10px 0 em(40);
+    }
+  }
 </style>

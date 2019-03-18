@@ -17,9 +17,12 @@
 <script>
 export default {
   name:"RepoCard",
-  props: [
-    'repoData'
-  ]
+  props: {
+    repoData: {
+      type: Object,
+      required: true
+    }
+  }
 }
 </script>
 

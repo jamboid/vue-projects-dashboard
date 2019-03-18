@@ -12,9 +12,12 @@ export default {
   components: {
     RepoCard,
   },
-  props: [
-    'results',
-  ]
+  props: {
+    results: {
+      type:Array,
+      required: true
+    }
+  }
 }
 </script>
 
