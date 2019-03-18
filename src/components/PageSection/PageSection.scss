@@ -1,0 +1,15 @@
+.pageSection {
+  $self: &;
+
+  &__inner {
+    padding:5vw;
+  }
+
+  &__header {
+    background:$clrWhite;
+
+    #{ $self }__inner {
+      padding:0;
+    }
+  }
+}

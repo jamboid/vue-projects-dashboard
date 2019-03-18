@@ -1,18 +1,18 @@
 .cp_Logo {
-  margin:em(20) auto;
+  padding:em(20) 0; 
+  text-align: center;
 
   &__image {
     max-width:50vw;
+    line-height: 0;
+    margin:0 auto em(15);
+    text-align: center;
   }
 
-  h1 {
-    margin-bottom: 0;
-  }
-
-  h2 {
-    font-size:em(18);
-    font-weight:lighter;
-    color:$clrLightGrey;
-    margin:0 0 1.5em;
+  &__title {
+    font-size:em(24);
+    font-weight:$bold;
+    color:#92AECC;
+    margin:0;
   }
 }
