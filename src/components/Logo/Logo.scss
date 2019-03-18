@@ -1,6 +1,8 @@
-.cp_Logo {
+.logo {
   padding:em(20) 0; 
   text-align: center;
+  grid-column:span 12;
+
 
   &__image {
     max-width:50vw;

@@ -1,9 +1,9 @@
 <template>
-  <div class="cp_Logo">
-    <h1 class="cp_Logo__image">
+  <div class="logo">
+    <h1 class="logo__image">
       <AppLogo />
     </h1>
-    <h1 class="cp_Logo__title">Vue Form Framework</h1>
+    <h1 class="logo__title">Vue Form Framework</h1>
   </div>
 </template>
 

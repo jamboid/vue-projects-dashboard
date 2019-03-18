@@ -2,14 +2,13 @@
   $self: &;
 
   &__inner {
-    padding:5vw;
+    padding:0 5vw;
+    display:grid;
+    grid-template-columns:repeat(12, 1fr);
+    grid-gap:2vw;
   }
 
   &__header {
     background:$clrWhite;
-
-    #{ $self }__inner {
-      padding:0;
-    }
   }
 }
