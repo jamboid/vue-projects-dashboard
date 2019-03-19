@@ -10,10 +10,6 @@ NOTE: Imports all other files in the /framework folder
 @import "global/global-breakpoints";
 @import "global/global-animation";
 
-/* !== Resets */
-@import "resets/reset";
-// @import "resets/reset-forms";
-
 /* !== Modules */
 @import "modules/mod-units";
 @import "modules/mod-maths";

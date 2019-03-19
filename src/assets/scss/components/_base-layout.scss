@@ -1,0 +1,9 @@
+// Base Layout Styles
+//
+// - Grid utility classes
+
+.gd_Base {
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  grid-gap:2vw;
+}

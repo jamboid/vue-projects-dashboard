@@ -1,0 +1,34 @@
+// Form Button Component styles
+
+.ob_FormButton {
+  border:none;
+  cursor: pointer;
+  margin-right: 10px;
+
+  &--basic,
+  &--negative {
+    font-size:em(20);
+    font-weight: $bold;
+    color:$clrWhite;
+    padding:em(10, 20) em(20,20) em(12,20);
+    border-radius:6px;
+    transition:all $timeStandardLink;
+  }
+
+  &--basic {
+    background:$clrBlue;
+
+    &:hover, &:focus, &:active {
+      background:darken($clrBlue,15);
+    }
+  }
+
+  &--negative {
+    background:$clrRed;
+
+    &:hover, &:focus, &:active {
+      background:darken($clrRed,15);
+    }
+  }
+  
+}

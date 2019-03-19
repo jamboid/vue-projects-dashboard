@@ -3,12 +3,17 @@
 
   &__inner {
     padding:0 5vw;
-    display:grid;
-    grid-template-columns:repeat(12, 1fr);
-    grid-gap:2vw;
   }
 
   &__header {
     background:$clrWhite;
+  }
+
+  .logo {
+    grid-column: span 12;
+  }
+
+  .cp_Form {
+    grid-column: span 6;
   }
 }

@@ -1,6 +1,6 @@
 <template>
-  <section :class="['pageSection__' + sectionType, 'pageSection']">
-    <div class="pageSection__inner">
+  <section :class="getSectionClass()" class="pageSection" >
+    <div :class="['pageSection__inner', 'gd_' + gridType]">
       <slot></slot>
     </div>
   </section>
@@ -13,6 +13,20 @@ export default {
     sectionType: {
       type: String,
       required: false
+    },
+    gridType: {
+      type: String,
+      required: false
+    }
+  },
+  methods: {
+    getSectionClass: function() {
+      let classString = "";
+      if (this.sectionType) {
+        classString += 'pageSection__' + this.sectionType;
+      }
+
+      return classString;
     }
   }
 }
