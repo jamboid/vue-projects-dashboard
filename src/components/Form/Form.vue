@@ -1,8 +1,8 @@
 <template>
   <form class="ob_Form" v-on:submit=handleFormSubmit>
-    <TextField v-model="name" label="Your Name"></TextField>
-    <TextField v-model="email" label="Your email"></TextField>
-    <TextField v-model="search" label="Search Term"></TextField>
+    <TextField id="name" v-model="name" label="Your Name" required></TextField>
+    <TextField id="email" v-model="email" label="Your email"></TextField>
+    <TextField id="search" v-model="search" label="Search Term" required></TextField>
     <Button :onClick="handleFormSubmit" label="Send now" mode="basic"></Button>
     <Button :onClick="clearForm" label="Clear form" mode="negative"></Button>
   </form>
@@ -34,8 +34,8 @@ export default {
       this.$emit('submit-message', {
         "event": eventObj,
         "name": this.name,
-        "search": this.search,
-        "email": this.email
+        "email": this.email,
+        "search": this.search
       });
 
       this.clearForm(e);
