@@ -5,15 +5,22 @@
     padding:0 5vw;
   }
 
-  &__header {
+  &--header {
     background:$clrWhite;
+  }
+
+  &--main {
+    #{ $self }__inner {
+      padding:5vw;
+    } 
   }
 
   .logo {
     grid-column: span 12;
   }
 
-  .cp_Form {
+  .ob_Form,
+  .cp_FormReport {
     grid-column: span 6;
   }
 }

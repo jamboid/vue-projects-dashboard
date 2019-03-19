@@ -23,7 +23,7 @@ export default {
     getSectionClass: function() {
       let classString = "";
       if (this.sectionType) {
-        classString += 'pageSection__' + this.sectionType;
+        classString += 'pageSection--' + this.sectionType;
       }
 
       return classString;

@@ -1,0 +1,15 @@
+// Form Report component styles
+
+.cp_FormReport {
+  &__inner {
+    padding:em(40);
+    background:$clrGrey;
+    color:$clrWhite;
+    border-radius:6px;
+  }
+
+  pre {
+    line-height: 1.5;
+    font-family: $monospacefontfamily;
+  }
+}

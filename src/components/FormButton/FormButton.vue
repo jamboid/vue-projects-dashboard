@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick" :class="['ob_FormButton', 'ob_FormButton--' + mode]">{{ label }}</button>
+  <input type="submit" @click="onClick" :class="['ob_FormButton', 'ob_FormButton--' + mode]" :value="label" />
 </template>
 
 <script>

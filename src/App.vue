@@ -5,6 +5,7 @@
     </PageSection>
     <PageSection sectionType="main" gridType="Base">
       <Form @submit-message="handleSubmit"></Form>
+      <FormReport :formEvent="formEvent"></FormReport>
     </PageSection>
   </div>
 </template>
@@ -13,22 +14,24 @@
 import PageSection from "./components/PageSection/PageSection";
 import Logo from "./components/Logo/Logo";
 import Form from "./components/Form/Form";
+import FormReport from "./components/FormReport/FormReport";
 
 export default {
   name: 'app',
   components: {
     PageSection,
     Logo,
-    Form
+    Form,
+    FormReport
   },
   data: function () {
     return {
-
+      formEvent: {}
     }
   },
   methods: {
     handleSubmit: function(event) {
-      console.log(event);
+      this.formEvent = event;
     }
   }
 };
