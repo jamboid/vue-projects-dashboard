@@ -12,4 +12,9 @@
     line-height: 1.5;
     font-family: $monospacefontfamily;
   }
+
+  &__title {
+    color:lighten($clrGreen,30); 
+    margin-bottom:1em;
+  }
 }

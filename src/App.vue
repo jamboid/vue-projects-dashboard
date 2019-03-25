@@ -5,7 +5,7 @@
     </PageSection>
     <PageSection sectionType="main" gridType="Base">
       <Form></Form>
-      <FormReport></FormReport>
+      <FormReport reportTitle="Vuex state.formData array:"></FormReport>
     </PageSection>
   </div>
 </template>
