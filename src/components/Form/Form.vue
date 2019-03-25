@@ -3,8 +3,10 @@
     <TextField id="name" v-model="name" label="Your Name" required></TextField>
     <TextField id="email" v-model="email" label="Your email"></TextField>
     <TextField id="search" v-model="search" label="Search Term" required></TextField>
-    <Button :onClick="handleFormSubmit" label="Send now" mode="basic"></Button>
-    <Button :onClick="resetFormData" label="Reset data" mode="negative"></Button>
+    <div class="ob_Form__actions">
+      <Button :onClick="handleFormSubmit" label="Send now" mode="basic"></Button>
+      <Button :onClick="resetFormData" label="Reset data" mode="negative"></Button>
+    </div>
   </form>
 </template>
 

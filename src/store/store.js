@@ -5,12 +5,7 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    formData: [{
-      event: null,
-      name: 'Not set',
-      email: 'Not set',
-      search: 'Not set'
-    },]
+    formData: []
   },
   getters: {
     formEvent: (state) => {
@@ -27,12 +22,7 @@ export const store = new Vuex.Store({
       });
     },
     resetFormData: (state) => {
-      state.formData = [{
-        event: null,
-        name: 'Not set',
-        email: 'Not set',
-        search: 'Not set'
-      }]
+      state.formData = []
     }
   },
   actions: {

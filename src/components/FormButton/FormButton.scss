@@ -3,7 +3,6 @@
 .ob_FormButton {
   border:none;
   cursor: pointer;
-  margin-right: 10px;
 
   &--basic,
   &--negative {
@@ -16,15 +15,16 @@
   }
 
   &--basic {
-    background:$clrBlue;
+    background:$clrGreen; 
 
     &:hover, &:focus, &:active {
-      background:darken($clrBlue,15);
-    }
+      background:darken($clrGreen,10);
+    } 
   }
 
   &--negative {
     background:$clrRed;
+    font-size:em(16);
 
     &:hover, &:focus, &:active {
       background:darken($clrRed,15);
