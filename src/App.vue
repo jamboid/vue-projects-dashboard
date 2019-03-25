@@ -4,7 +4,7 @@
       <Logo></Logo>
     </PageSection>
     <PageSection sectionType="main" gridType="Base">
-      <Form @submit-message="handleSubmit"></Form>
+      <Form></Form>
       <FormReport></FormReport>
     </PageSection>
   </div>
@@ -26,13 +26,11 @@ export default {
   },
   data: function () {
     return {
-      formEvent: {}
+
     }
   },
   methods: {
-    handleSubmit: function(event) {
-      this.formEvent = event;
-    }
+
   }
 };
 </script>

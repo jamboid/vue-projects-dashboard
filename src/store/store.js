@@ -5,12 +5,12 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    formData: {
+    formData: [{
       event: null,
       name: 'Not set',
       email: 'Not set',
       search: 'Not set'
-    }
+    },]
   },
   getters: {
     formEvent: (state) => {
@@ -19,10 +19,20 @@ export const store = new Vuex.Store({
   },
   mutations: {
     updateFormReport:(state, data) => {
-      state.formData.event = data.event;
-      state.formData.name = data.name;
-      state.formData.email = data.email;
-      state.formData.search = data.search;
+      state.formData.push({
+        event: data.event,
+        name: data.name,
+        email: data.email,
+        search: data.search
+      });
+    },
+    resetFormData: (state) => {
+      state.formData = [{
+        event: null,
+        name: 'Not set',
+        email: 'Not set',
+        search: 'Not set'
+      }]
     }
   },
   actions: {

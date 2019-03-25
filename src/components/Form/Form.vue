@@ -4,7 +4,7 @@
     <TextField id="email" v-model="email" label="Your email"></TextField>
     <TextField id="search" v-model="search" label="Search Term" required></TextField>
     <Button :onClick="handleFormSubmit" label="Send now" mode="basic"></Button>
-    <Button :onClick="clearForm" label="Clear form" mode="negative"></Button>
+    <Button :onClick="resetFormData" label="Reset data" mode="negative"></Button>
   </form>
 </template>
 
@@ -27,7 +27,6 @@ export default {
     }
   },
   methods: {
-
     handleFormSubmit:function(e) {
       e.preventDefault();
 
@@ -42,6 +41,11 @@ export default {
         }
       );
 
+      this.clearForm(e);
+    },
+
+    resetFormData: function(e) {
+      this.$store.commit('resetFormData');
       this.clearForm(e);
     },
 
