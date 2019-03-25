@@ -5,7 +5,7 @@
     </PageSection>
     <PageSection sectionType="main" gridType="Base">
       <Form @submit-message="handleSubmit"></Form>
-      <FormReport :formEvent="formEvent"></FormReport>
+      <FormReport></FormReport>
     </PageSection>
   </div>
 </template>

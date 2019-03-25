@@ -22,24 +22,29 @@ export default {
   data: function () {
     return {
       name: '',
-      search: '',
       email: '',
+      search: '',
     }
   },
   methods: {
+
     handleFormSubmit:function(e) {
       e.preventDefault();
 
       const eventObj = e;
-      this.$emit('submit-message', {
-        "event": eventObj,
-        "name": this.name,
-        "email": this.email,
-        "search": this.search
-      });
+
+      this.$store.commit('updateFormReport',
+        {
+          "event": eventObj.type,
+          "name": this.name,
+          "email": this.email,
+          "search": this.search
+        }
+      );
 
       this.clearForm(e);
     },
+
     clearForm: function(e) {
       e.preventDefault();
       this.name = "";

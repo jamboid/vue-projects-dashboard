@@ -3,6 +3,8 @@
 
   &__inner {
     padding:0 5vw;
+    max-width:em(1100);
+    margin:0 auto;
   }
 
   &--header {
@@ -22,5 +24,20 @@
   .ob_Form,
   .cp_FormReport {
     grid-column: span 6;
+  }
+}
+
+/* !== Breakpoint */
+@include mq($bpLando) {
+  .pageSection {
+    .ob_Form,
+    .cp_FormReport {
+      grid-column: span 12;
+    }
+
+    .ob_Form {
+      grid-row:2;
+      margin-top: 20px;
+    }
   }
 }

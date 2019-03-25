@@ -1,3 +1,10 @@
+
+*,
+*:before,
+*:after {
+  box-sizing:border-box;
+}
+
 body {
   background:$clrOffWhite;
   margin: 0;
