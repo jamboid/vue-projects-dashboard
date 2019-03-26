@@ -1,7 +1,7 @@
 <template>
-  <div class="cp_TextField">
+  <div class="cp_TextField" :class="{ [`cp_TextField--${status}`]: status }">
     <label class="cp_TextField__label" :for="id" >{{ label }}</label>
-    <input :id="id" class="cp_TextField__input" v-bind:value="value" v-on:input="$emit('input', $event.target.value)" type="text">
+    <input :id="id" class="cp_TextField__input" v-bind:value="value" @input="$emit('input', $event.target.value)" @blur="$emit('blur', $event.target.value)" type="text">
   </div>
 </template>
 
@@ -20,9 +20,8 @@ export default {
       type: String,
       required: true
     },
-    required: {
-      type: Boolean,
-      require: false
+    status: {
+      type: String
     }
   }
 }

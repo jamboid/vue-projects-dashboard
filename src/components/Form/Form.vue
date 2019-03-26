@@ -1,8 +1,8 @@
 <template>
   <form class="ob_Form" v-on:submit=handleFormSubmit>
-    <TextField id="name" v-model="name" label="Your Name" required></TextField>
-    <TextField id="email" v-model="email" label="Your email"></TextField>
-    <TextField id="search" v-model="search" label="Search Term" required></TextField>
+    <TextField id="name" v-model="form.name" label="Your Name" :status="$v.form.name.$error ? 'error' : null" @blur="$v.form.name.$touch()"></TextField>
+    <TextField id="email" v-model="form.email" label="Your email" :status="$v.form.email.$error ? 'error' : null" @blur="$v.form.email.$touch()"></TextField>
+    <TextField id="search" v-model="form.search" label="Search Term"></TextField>
     <div class="ob_Form__actions">
       <Button :onClick="handleFormSubmit" label="Send now" mode="basic"></Button>
       <Button :onClick="resetFormData" label="Reset data" mode="negative"></Button>
@@ -13,33 +13,57 @@
 <script>
 
 import Button from "../FormButton/FormButton.vue";
-import TextField from "../TextField/TextField.vue"
+import TextField from "../TextField/TextField.vue";
+import formMixin from '../../mixins/form';
+
+import { required, between, email } from 'vuelidate/lib/validators';
 
 export default {
   name: 'Form',
+  mixins: [formMixin],
   components: {
     Button,
     TextField
   },
   data: function () {
     return {
-      name: '',
-      email: '',
-      search: '',
+      form: {
+        name: '',
+        email: '',
+        search: '',
+      }
+    }
+  },
+  validations: {
+    form: {
+      name: {
+        required
+      },
+      email: {
+        required,
+        email
+      }
     }
   },
   methods: {
     handleFormSubmit:function(e) {
       e.preventDefault();
 
-      const eventObj = e;
+      // Check validation for the whole form and return out of this
+      // function if there are any errors..
+      this.$v.$touch();
+      if(this.$v.$anyError) {
+        return
+      }
 
+
+      const eventObj = e;
       this.$store.commit('updateFormReport',
         {
           "event": eventObj.type,
-          "name": this.name,
-          "email": this.email,
-          "search": this.search
+          "name": this.form.name,
+          "email": this.form.email,
+          "search": this.form.search
         }
       );
 
@@ -53,9 +77,14 @@ export default {
 
     clearForm: function(e) {
       e.preventDefault();
-      this.name = "";
-      this.search = "";
-      this.email = "";
+
+      // Reset the validator object, so we're not creating error states by reseting the form
+      this.$v.$reset();
+
+      // Empty the form fields
+      this.form.name = "";
+      this.form.search = "";
+      this.form.email = "";
     }
   }
 }

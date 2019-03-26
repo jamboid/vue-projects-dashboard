@@ -1,6 +1,8 @@
 // Text Field component styles
 
 .cp_TextField {
+  $self: &;
+
   margin:0 0 1em;
 
   &__label {
@@ -18,5 +20,15 @@
     width: 100%;
     border-radius:6px;
     border:1px solid $clrVeryLightGrey;
+  }
+
+  &--error {
+    #{ $self }__label {
+      color:$clrRed;
+    }
+
+    #{ $self }__input {
+      border-color:$clrRed;
+    }
   }
 }
