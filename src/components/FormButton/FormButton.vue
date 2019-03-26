@@ -1,5 +1,5 @@
 <template>
-  <input type="submit" @click="onClick" :class="['ob_FormButton', 'ob_FormButton--' + mode]" :value="label" />
+  <input type="submit" v-on="onClick !== undefined ? { click: onClick } : null" :class="['ob_FormButton', 'ob_FormButton--' + mode]" :value="label" />
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
     },
     onClick: {
       type: Function,
-      required: true
+      required: false
     }
   }
 }

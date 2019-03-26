@@ -1,10 +1,10 @@
 <template>
-  <form class="ob_Form" v-on:submit=handleFormSubmit>
+  <form class="ob_Form" @submit.prevent=handleFormSubmit>
     <TextField id="name" v-model="form.name" label="Your Name" :status="$v.form.name.$error ? 'error' : null" @blur="$v.form.name.$touch()"></TextField>
     <TextField id="email" v-model="form.email" label="Your email" :status="$v.form.email.$error ? 'error' : null" @blur="$v.form.email.$touch()"></TextField>
     <TextField id="search" v-model="form.search" label="Search Term"></TextField>
     <div class="ob_Form__actions">
-      <Button :onClick="handleFormSubmit" label="Send now" mode="basic"></Button>
+      <Button label="Send now" mode="basic"></Button>
       <Button :onClick="resetFormData" label="Reset data" mode="negative"></Button>
     </div>
   </form>
@@ -56,7 +56,8 @@ export default {
         return
       }
 
-
+      // Update the store state object by calling the updateFormReport mutation,
+      // passing a new object containing the form data
       const eventObj = e;
       this.$store.commit('updateFormReport',
         {
@@ -67,6 +68,7 @@ export default {
         }
       );
 
+      // Now clear the form
       this.clearForm(e);
     },
 

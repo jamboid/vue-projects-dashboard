@@ -1,7 +1,14 @@
 <template>
   <div class="cp_TextField" :class="{ [`cp_TextField--${status}`]: status }">
     <label class="cp_TextField__label" :for="id" >{{ label }}</label>
-    <input :id="id" class="cp_TextField__input" v-bind:value="value" @input="$emit('input', $event.target.value)" @blur="$emit('blur', $event.target.value)" type="text">
+    <input
+      type="text"
+      :id="id"
+      class="cp_TextField__input"
+      v-bind:value="value"
+      @input="$emit('input', $event.target.value)"
+      @blur="$emit('blur', $event.target.value)"
+      >
   </div>
 </template>
 
@@ -28,6 +35,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import 'TextField.scss'
+  @import "TextField.scss";
 </style>
 
