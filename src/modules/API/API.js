@@ -1,5 +1,7 @@
 // API Module
 function handleError(response) {
+  console.log(response);
+
   return response.ok ? response : Promise.reject(response.statusText);
 }
 
@@ -7,7 +9,6 @@ function handleStatus(response) {
   if (response.status === 404) {
     return Promise.reject('404');
   }
-
   return response;
 }
 
@@ -22,35 +23,37 @@ function handleContentType(response) {
 }
 
 function processData(rawData) {
-  //console.log(rawData);
+  console.log(rawData);
 
-  const processedData = [];
+  const processedData = rawData.Projects;
 
-  for (var i = 0; i < rawData.length; i++) {
-    const rawRepo = rawData[i];
-    const processedRepo = {};
+  // for (var i = 0; i < rawData.length; i++) {
+  //   const rawRepo = rawData[i];
+  //   const processedRepo = {};
 
-    // console.log(rawRepo);
+  //   // console.log(rawRepo);
 
-    processedRepo.id = rawRepo.id;
-    processedRepo.name = rawRepo.name;
-    processedRepo.description = rawRepo.description;
-    processedRepo.url = rawRepo.html_url;
-    processedRepo.watchers = rawRepo.watchers_count;
-    processedRepo.stars = rawRepo.stargazers_count;
+  //   processedRepo.id = rawRepo.id;
+  //   processedRepo.name = rawRepo.name;
+  //   processedRepo.description = rawRepo.description;
+  //   processedRepo.url = rawRepo.html_url;
+  //   processedRepo.watchers = rawRepo.watchers_count;
+  //   processedRepo.stars = rawRepo.stargazers_count;
 
-    processedData.push(processedRepo);
-  }
+  //   processedData.push(processedRepo);
+  // }
 
   return processedData;
 }
 
 // Abstract Ajax Get function
 export function getJSON(query) {
+  console.log(query);
+
   return window.fetch(query, {
     method: 'GET',
     headers: new Headers({
-      Accept: 'application/json',
+      'Accept': 'application/json'
     }),
     simple: true,
   })
@@ -59,7 +62,7 @@ export function getJSON(query) {
     .then(handleContentType)
     .then(processData)
     .catch((error) => {
-      console.log(error);
+      console.log('error: ',error);
     });
 }
 

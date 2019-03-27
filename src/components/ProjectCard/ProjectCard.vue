@@ -1,7 +1,7 @@
 <template>
    <div class="cp_ProjectCard">
       <div class="cp_ProjectCard__details">
-        <h2 class="cp_ProjectCard__title">{{ projectData.name}}</h2>
+        <h2 class="cp_ProjectCard__title">[{{ projectData.number}}] {{ projectData.name}}</h2>
       </div>
     </div>
 </template>

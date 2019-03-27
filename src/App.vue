@@ -13,6 +13,7 @@
 import PageSection from "./components/PageSection/PageSection";
 import Logo from "./components/Logo/Logo";
 import ProjectsList from "./components/ProjectsList/ProjectsList";
+import getJSON from './modules/API';
 
 export default {
   name: 'app',
@@ -27,7 +28,20 @@ export default {
     }
   },
   methods: {
+    getProjectsFromServer: function () {
+      const endpoint = "http://jboyd.wip.gd/remote-data/vue-projects-dashboard.json"
 
+      getJSON(endpoint)
+      .then(projects => {
+        this.$store.commit('updateProjectsList', projects);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+  },
+  created() {
+    this.getProjectsFromServer();
   }
 };
 </script>
