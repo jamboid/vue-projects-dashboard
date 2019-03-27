@@ -1,4 +1,4 @@
-# repo-man-vue
+# Vue Projects Dashboard
 
 ## Project setup
 ```

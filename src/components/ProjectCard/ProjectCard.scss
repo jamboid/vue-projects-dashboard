@@ -1,0 +1,26 @@
+.cp_ProjectCard {
+  $self: &;
+  
+  background:$clrWhite;
+  max-width:em(700);
+  margin:0 auto em(20);
+  box-shadow:0 3px 15px rgba($clrBlack,0.1);
+  border-radius: 7px;
+  display: flex; 
+
+  > * {
+    padding:em(12) em(15);
+  }
+
+  &__details {
+    flex-grow:1;
+    text-align: left; 
+  }
+
+  &__title {
+    font-size:em(20);
+    font-weight: $bold;
+    margin:0;
+    color:$clrGrey;
+  }
+}

@@ -4,8 +4,7 @@
       <Logo></Logo>
     </PageSection>
     <PageSection sectionType="main" gridType="Base">
-      <Form></Form>
-      <FormReport reportTitle="Vuex state.formData array:"></FormReport>
+      <ProjectsList></ProjectsList>
     </PageSection>
   </div>
 </template>
@@ -13,16 +12,14 @@
 <script>
 import PageSection from "./components/PageSection/PageSection";
 import Logo from "./components/Logo/Logo";
-import Form from "./components/Form/Form";
-import FormReport from "./components/FormReport/FormReport";
+import ProjectsList from "./components/ProjectsList/ProjectsList";
 
 export default {
   name: 'app',
   components: {
     PageSection,
     Logo,
-    Form,
-    FormReport
+    ProjectsList,
   },
   data: function () {
     return {
