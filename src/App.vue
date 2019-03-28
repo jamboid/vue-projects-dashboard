@@ -5,6 +5,7 @@
     </PageSection>
     <PageSection sectionType="main" gridType="Base">
       <ProjectsList></ProjectsList>
+      <ProjectEditor></ProjectEditor>
     </PageSection>
   </div>
 </template>
@@ -13,7 +14,8 @@
 import PageSection from "./components/PageSection/PageSection";
 import Logo from "./components/Logo/Logo";
 import ProjectsList from "./components/ProjectsList/ProjectsList";
-import getJSON from './modules/API';
+import ProjectEditor from "./components/ProjectEditor/ProjectEditor";
+import { getJSON } from './modules/Ajax';
 
 export default {
   name: 'app',
@@ -21,6 +23,7 @@ export default {
     PageSection,
     Logo,
     ProjectsList,
+    ProjectEditor,
   },
   data: function () {
     return {
@@ -32,7 +35,8 @@ export default {
       const endpoint = "http://jboyd.wip.gd/remote-data/vue-projects-dashboard.json"
 
       getJSON(endpoint)
-      .then(projects => {
+      .then(data => {
+        const projects = data.Projects;
         this.$store.commit('updateProjectsList', projects);
       })
       .catch((err) => {
@@ -40,7 +44,7 @@ export default {
       });
     }
   },
-  created() {
+  created: function() {
     this.getProjectsFromServer();
   }
 };

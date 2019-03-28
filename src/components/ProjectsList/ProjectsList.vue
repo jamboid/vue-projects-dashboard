@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     projects () {
-      return this.$store.getters.getProjects;
+      return this.$store.getters.allProjects;
     }
   },
 }

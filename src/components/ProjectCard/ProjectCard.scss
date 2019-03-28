@@ -4,9 +4,11 @@
   background:$clrWhite;
   max-width:em(700);
   margin:0 auto em(20);
-  box-shadow:0 3px 15px rgba($clrBlack,0.1);
-  border-radius: 7px;
+  box-shadow:0 3px 4px rgba($clrBlack,0.1);
+  border-radius: 5px;
   display: flex; 
+  transition:all $timeStandardLink;
+    
 
   > * {
     padding:em(12) em(15);
@@ -20,7 +22,47 @@
   &__title {
     font-size:em(20);
     font-weight: $bold;
-    margin:0;
+    margin:0 0 10px;
     color:$clrGrey;
   }
+
+  &__jobNumber {
+    padding:4px 5px 2px;
+    font-size:em(18,20);
+    line-height: 1;
+    background:#CAF75A;
+    border-radius:3px;
+    margin-right: 3px;
+    display: inline-block;
+  }
+
+  &__desc {
+    font-size:em(14);
+    margin:em(5) 0 0;
+    color:$clrLightGrey;
+  }
+
+  &__editButton {
+    background:none;
+    border:none;
+    padding: 4px;
+    cursor: pointer;
+    transition:all $timeStandardLink;
+
+    &--editing {
+      
+    }
+  }
+
+  &--editing {
+    opacity:0.5;
+
+    #{ $self }__editButton {
+      opacity:0.2; 
+      transform:scale(0.8);
+      cursor:default;
+      outline: none;
+    } 
+  }
 }
+
