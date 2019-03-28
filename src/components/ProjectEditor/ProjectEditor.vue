@@ -7,7 +7,7 @@
       <Button label="Update Project" mode="basic"></Button>
       <Button :onClick=cancelEdit label="Cancel" mode="negative"></Button>
     </div>
-  </form>  
+  </form>
 </template>
 
 <script>
@@ -69,7 +69,7 @@ export default {
       console.log(allProjects.length);
       if(allProjects.length > 0) {
         allProjects.forEach((thisProject) => {
-          if (thisProject.number === currentlyEditing) {          
+          if (thisProject.number === currentlyEditing) {
             this.project.number = thisProject.number;
             this.project.name = thisProject.name;
             this.project.client = thisProject.client;
@@ -77,12 +77,12 @@ export default {
             this.project.description = thisProject.description;
           }
         });
-      }      
-    }, 
+      }
+    },
 
     handleFormSubmit: function (e) {
       e.preventDefault();
-      
+
       this.$v.$touch();
       if(this.$v.$anyError) {
         return
@@ -90,18 +90,18 @@ export default {
 
       this.$store.commit('updateProject', this.project);
 
-      
+
     },
-    
+
     cancelEdit: function (e) {
       e.preventDefault();
-      console.log('cancelEdit'); 
+      console.log('cancelEdit');
       this.$store.commit('cancelEdit');
     }
   },
   mounted: function () {
     this.$nextTick(function () {
-      this.updateFormData();
+      this.updateFormData();ç
     })
   }
 }
