@@ -1,6 +1,7 @@
 .cp_ProjectEditor {
   grid-column: 7 / span 6;
-  padding:em(40);
+  grid-row:1;
+  padding:em(20);
   background:$clrWhite;
   box-shadow:0 3px 4px rgba($clrBlack,0.1);
   border-radius: 5px;

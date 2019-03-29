@@ -1,7 +1,9 @@
 <template>
+
   <section class="cp_ProjectsList">
     <ProjectCard v-for="project in projects" :projectData="project" :key="project.number"></ProjectCard>
   </section>
+
 </template>
 
 <script>
@@ -15,6 +17,9 @@ export default {
   computed: {
     projects () {
       return this.$store.getters.allProjects;
+    },
+    isVisible: function () {
+      return this.$store.getters.mode === 'edit' ? false : true;
     }
   },
 }
