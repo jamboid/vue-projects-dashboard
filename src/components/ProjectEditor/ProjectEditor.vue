@@ -120,7 +120,6 @@ export default {
 
     cancelEdit: function (e) {
       e.preventDefault();
-      console.log('cancelEdit');
       this.$store.commit('cancelEdit');
     }
   },
