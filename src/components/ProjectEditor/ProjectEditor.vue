@@ -1,6 +1,6 @@
 <template>
 <transition name="fade">
-  <form v-if="formVisible"  class="cp_ProjectEditor ob_Form" @submit=handleFormSubmit>
+  <form v-if="isVisible"  class="cp_ProjectEditor ob_Form" @submit=handleFormSubmit>
     <div class="cp_ProjectEditor__number">{{ this.projectNumber }}</div>
     <TextField id="name" v-model="project.name" label="Project Name" :status="$v.project.name.$error ? 'error' : null" @blur="$v.project.name.$touch()"></TextField>
     <TextField id="client" v-model="project.client" label="Client" :status="$v.project.client.$error ? 'error' : null" @blur="$v.project.client.$touch()"></TextField>
@@ -65,13 +65,13 @@ export default {
     projectNumber() {
       return this.$store.getters.editing;
     },
-    formVisible: function () {
+    isVisible: function () {
       return this.$store.getters.mode === 'edit' ? true : false;
     }
   },
   watch: {
-    formVisible: function (val) {
-      if(this.formVisible) {
+    isVisible: function () {
+      if(this.isVisible) {
         this.updateFormData();
       } else {
         this.clearForm();
