@@ -66,11 +66,18 @@ export default {
       return this.$store.getters.editing;
     },
     formVisible: function () {
-      this.updateFormData();
-      return (this.$store.getters.mode === 'edit' ? true : false);
+      return this.$store.getters.mode === 'edit' ? true : false;
     }
   },
-
+  watch: {
+    formVisible: function (val) {
+      if(this.formVisible) {
+        this.updateFormData();
+      } else {
+        this.clearForm();
+      }
+    }
+  },
   methods: {
     updateFormData: function () {
       const allProjects = this.$store.getters.allProjects;
@@ -90,6 +97,14 @@ export default {
           this.project.description = projectToEdit.description;
         }
       }
+    },
+
+    clearForm: function () {
+      this.project.number = null;
+      this.project.name = '';
+      this.project.client = '';
+      this.project.owner = '';
+      this.project.description = '';
     },
 
     handleFormSubmit: function (e) {
