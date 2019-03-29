@@ -4,4 +4,22 @@
   background:$clrWhite;
   box-shadow:0 3px 4px rgba($clrBlack,0.1);
   border-radius: 5px;
+
+  &__number {
+    font-size:em(20);
+    font-weight: $bold;
+    padding:em(6,20) em(8,20) em(4,20);
+    background:#4BF9D8;
+    border-radius:5px;
+    margin-bottom: 1em;
+    display: inline-block;
+  }
+
+  &.fade-enter-active, &.fade-leave-active {
+    transition: opacity $timeStandardLink;
+  }
+
+  &.fade-enter, &.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
 }

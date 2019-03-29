@@ -30,7 +30,7 @@
     padding:4px 5px 2px;
     font-size:em(18,20);
     line-height: 1;
-    background:#CAF75A;
+    background:#4BF9D8;
     border-radius:3px;
     margin-right: 3px;
     display: inline-block;
@@ -38,19 +38,41 @@
 
   &__desc {
     font-size:em(14);
-    margin:em(5) 0 0;
+    margin:em(5) 0 em(10);
     color:$clrLightGrey;
+  }
+
+  &__meta {
+    display: flex;
+    padding:10px;
+    background:$clrOffWhite;
+    border-radius: 5px;
+  }
+
+  &__owner,
+  &__client {
+    font-size:em(14);
+    color:$clrLightGrey;
+    margin-right: 15px;
+
+    strong {
+      color:$clrGrey;
+      font-weight: $bold;
+    }
   }
 
   &__editButton {
     background:none;
     border:none;
-    padding: 4px;
+    padding:4px 6px;
     cursor: pointer;
     transition:all $timeStandardLink;
+    background:$clrPaleGrey;
+    border-radius: 5px;
 
-    &--editing {
-      
+    svg {
+      width: 28px;
+      height: 28px;
     }
   }
 

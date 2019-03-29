@@ -1,9 +1,9 @@
 // Text Field component styles
 
-.cp_TextField {
+.cp_TextArea {
   $self: &;
 
-  margin:0 0 1em;
+  margin:0 0 1em; 
 
   &__label {
     font-size:em(18);
@@ -18,7 +18,8 @@
     padding:em(10,18);
     font-weight: $medium;
     width: 100%;
-    border-radius:6px;
+    height:100px;
+    border-radius:6px; 
     border:1px solid $clrVeryLightGrey;
   }
 

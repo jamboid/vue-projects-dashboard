@@ -1,18 +1,24 @@
 <template>
+<transition name="fade">
   <form v-if="formVisible"  class="cp_ProjectEditor ob_Form" @submit=handleFormSubmit>
-    {{ this.projectNumber }}
+    <div class="cp_ProjectEditor__number">{{ this.projectNumber }}</div>
     <TextField id="name" v-model="project.name" label="Project Name" :status="$v.project.name.$error ? 'error' : null" @blur="$v.project.name.$touch()"></TextField>
     <TextField id="client" v-model="project.client" label="Client" :status="$v.project.client.$error ? 'error' : null" @blur="$v.project.client.$touch()"></TextField>
+    <TextField id="owner" v-model="project.owner" label="Owner" :status="$v.project.owner.$error ? 'error' : null" @blur="$v.project.owner.$touch()"></TextField>
+    <TextArea id="description" v-model="project.description" label="Description" :status="$v.project.description.$error ? 'error' : null" @blur="$v.project.description.$touch()"></TextArea>
+
     <div class="ob_Form__actions">
       <Button label="Update Project" mode="basic"></Button>
       <Button :onClick=cancelEdit label="Cancel" mode="negative"></Button>
     </div>
-  </form>  
+  </form>
+  </transition>
 </template>
 
 <script>
 import Button from "../FormButton/FormButton.vue";
 import TextField from "../TextField/TextField.vue";
+import TextArea from "../FormTextArea/FormTextArea.vue";
 import FormMixin from '../../mixins/form';
 
 import { required } from 'vuelidate/lib/validators';
@@ -22,6 +28,7 @@ export default {
   mixins: [FormMixin],
   components: {
     TextField,
+    TextArea,
     Button
   },
   data: function () {
@@ -42,6 +49,12 @@ export default {
       },
       client: {
         required
+      },
+      owner: {
+        required
+      },
+      description: {
+        required
       }
     }
   },
@@ -60,42 +73,39 @@ export default {
 
   methods: {
     updateFormData: function () {
-      console.log('updateFormData');
-
       const allProjects = this.$store.getters.allProjects;
       const currentlyEditing = this.$store.getters.editing;
       let projectToEdit;
 
-      console.log(allProjects.length);
       if(allProjects.length > 0) {
-        allProjects.forEach((thisProject) => {
-          if (thisProject.number === currentlyEditing) {          
-            this.project.number = thisProject.number;
-            this.project.name = thisProject.name;
-            this.project.client = thisProject.client;
-            this.project.owner = thisProject.owner;
-            this.project.description = thisProject.description;
-          }
+        projectToEdit = allProjects.find(function(project) {
+          return project.number === currentlyEditing;
         });
-      }      
-    }, 
+
+        if(projectToEdit) {
+          this.project.number = projectToEdit.number;
+          this.project.name = projectToEdit.name;
+          this.project.client = projectToEdit.client;
+          this.project.owner = projectToEdit.owner;
+          this.project.description = projectToEdit.description;
+        }
+      }
+    },
 
     handleFormSubmit: function (e) {
       e.preventDefault();
-      
+
       this.$v.$touch();
       if(this.$v.$anyError) {
         return
       }
 
       this.$store.commit('updateProject', this.project);
-
-      
     },
-    
+
     cancelEdit: function (e) {
       e.preventDefault();
-      console.log('cancelEdit'); 
+      console.log('cancelEdit');
       this.$store.commit('cancelEdit');
     }
   },

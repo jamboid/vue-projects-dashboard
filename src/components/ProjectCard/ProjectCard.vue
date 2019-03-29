@@ -3,6 +3,10 @@
       <div class="cp_ProjectCard__details">
         <h2 class="cp_ProjectCard__title"><span class="cp_ProjectCard__jobNumber">{{ projectData.number}}</span> {{ projectData.name}}</h2>
         <p class="cp_ProjectCard__desc">{{ projectData.description }}</p>
+        <div class="cp_ProjectCard__meta fx_Group">
+          <p class="cp_ProjectCard__client">Client: <strong>{{ projectData.client }}</strong></p>
+          <p class="cp_ProjectCard__owner">Owner: <strong>{{ projectData.owner }}</strong></p>
+        </div>
       </div>
       <div class="cp_ProjectCard__actions">
         <button @click="handleEditClick" class="cp_ProjectCard__editButton">

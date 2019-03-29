@@ -32,11 +32,19 @@ export const store = new Vuex.Store({
       state.projects = data;
     },
     updateProject: (state, data) => {
-      console.log(data);
+      const projectToUpdate = state.projects.find(function(project){
+        return project.number === data.number;
+      });
+
+      projectToUpdate.name = data.name;
+      projectToUpdate.client = data.client;
+      projectToUpdate.description = data.description;
+      projectToUpdate.owner = data.owner;
+
       state.mode = 'default';
     },
     setMode: (state, mode) => {
-      state.mode = mode; 
+      state.mode = mode;
     },
     cancelEdit: (state) => {
       state.mode = 'default';
