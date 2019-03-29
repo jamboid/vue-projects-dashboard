@@ -42,6 +42,7 @@ export const store = new Vuex.Store({
       projectToUpdate.owner = data.owner;
 
       state.mode = 'default';
+      state.editing = 0;
     },
     setMode: (state, mode) => {
       state.mode = mode;

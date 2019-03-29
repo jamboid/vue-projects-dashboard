@@ -1,12 +1,11 @@
 <template>
 <transition name="fade">
-  <form v-if="isVisible"  class="cp_ProjectEditor ob_Form" @submit=handleFormSubmit>
+  <form v-if="isVisible"  class="cp_ProjectEditor ob_Form" v-on:submit.prevent=handleFormSubmit>
     <div class="cp_ProjectEditor__number">{{ this.projectNumber }}</div>
-    <TextField id="name" v-model="project.name" label="Project Name" :status="$v.project.name.$error ? 'error' : null" @blur="$v.project.name.$touch()"></TextField>
-    <TextField id="client" v-model="project.client" label="Client" :status="$v.project.client.$error ? 'error' : null" @blur="$v.project.client.$touch()"></TextField>
-    <TextField id="owner" v-model="project.owner" label="Owner" :status="$v.project.owner.$error ? 'error' : null" @blur="$v.project.owner.$touch()"></TextField>
-    <TextArea id="description" v-model="project.description" label="Description" :status="$v.project.description.$error ? 'error' : null" @blur="$v.project.description.$touch()"></TextArea>
-
+    <TextField id="name" v-model="project.name" label="Project Name" :status="$v.project.name.$error ? 'error' : null" @blur="$v.project.name.$touch()" @input="$v.project.name.$touch()"></TextField>
+    <TextField id="client" v-model="project.client" label="Client" :status="$v.project.client.$error ? 'error' : null" @blur="$v.project.client.$touch()" @input="$v.project.client.$touch()"></TextField>
+    <TextField id="owner" v-model="project.owner" label="Owner" :status="$v.project.owner.$error ? 'error' : null" @blur="$v.project.owner.$touch()" @input="$v.project.owner.$touch()"></TextField>
+    <TextArea id="description" v-model="project.description" label="Description" :status="$v.project.description.$error ? 'error' : null" @blur="$v.project.description.$touch()" @input="$v.project.description.$touch()"></TextArea>
     <div class="ob_Form__actions">
       <Button label="Update Project" mode="basic"></Button>
       <Button :onClick=cancelEdit label="Cancel" mode="negative"></Button>
@@ -107,10 +106,7 @@ export default {
       this.project.description = '';
     },
 
-    handleFormSubmit: function (e) {
-      e.preventDefault();
-
-      this.$v.$touch();
+    handleFormSubmit: function () {
       if(this.$v.$anyError) {
         return
       }

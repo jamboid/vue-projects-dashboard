@@ -1,5 +1,5 @@
 <template>
-  <input type="submit" v-on="onClick !== undefined ? { click: onClick } : null" :class="['ob_FormButton', 'ob_FormButton--' + mode]" :value="label" />
+  <button type="submit" v-on="onClick !== undefined ? { click: onClick } : null" :class="['ob_FormButton', 'ob_FormButton--' + mode]">{{label}}</button>
 </template>
 
 <script>
