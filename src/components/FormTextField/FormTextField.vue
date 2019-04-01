@@ -6,8 +6,8 @@
       :id="id"
       class="cp_TextField__input"
       v-bind:value="value"
-      @input="$emit('input', $event.target.value)"
-      @blur="$emit('blur', $event.target.value)"
+      v-on:input="$emit('input', $event.target.value)"
+      v-on:blur="$emit('blur', $event.target.value)"
       >
   </div>
 </template>
@@ -35,6 +35,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "TextField.scss";
+  @import "FormTextField.scss";
 </style>
 

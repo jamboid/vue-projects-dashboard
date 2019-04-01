@@ -32,11 +32,7 @@ export default {
   },
   computed: {
     editing () {
-      if(this.$store.getters.mode !== 'default') {
-        return true;
-      } else {
-        return false;
-      }
+      return this.$store.getters.mode !== 'default' ? true :  false;
     }
   },
   methods: {

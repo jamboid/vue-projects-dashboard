@@ -16,7 +16,7 @@
 
 <script>
 import Button from "../FormButton/FormButton.vue";
-import TextField from "../TextField/TextField.vue";
+import TextField from "../FormTextField/FormTextField.vue";
 import TextArea from "../FormTextArea/FormTextArea.vue";
 import FormMixin from '../../mixins/form';
 
