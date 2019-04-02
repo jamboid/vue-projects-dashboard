@@ -1,6 +1,6 @@
 <template>
   <form class="cp_DisplayPrefs" v-on:change.prevent=updatePrefs>
-    <FormCheckbox v-model="prefs.darkMode" id="checktest" label="Dark Mode" :status="null"></FormCheckbox>
+    <FormCheckbox v-model="prefs.darkMode" id="checktest" label="User preference stored locally" :status="null"></FormCheckbox>
   </form>
 </template>
 

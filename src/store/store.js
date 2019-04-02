@@ -1,11 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { getJSON } from "../modules/Ajax";
 
 Vue.use(Vuex);
 
+
 export const store = new Vuex.Store({
   state: {
-    mode: 'default', // 'default' or 'edit'
+    mode: "default", // 'default' or 'edit'
     editing: 0,
     projects: [],
     prefs: {
@@ -38,12 +40,13 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
+    // Update projects list with new data from server
     updateProjectsList: (state, data) => {
       state.projects = data;
     },
-
+    // Update a specific project with new data from editor
     updateProject: (state, data) => {
-      const PROJECT_TO_UPDATE = state.projects.find(function(project){
+      const PROJECT_TO_UPDATE = state.projects.find(function(project) {
         return project.number === data.number;
       });
 
@@ -52,24 +55,24 @@ export const store = new Vuex.Store({
       PROJECT_TO_UPDATE.description = data.description;
       PROJECT_TO_UPDATE.owner = data.owner;
 
-      state.mode = 'default';
+      state.mode = "default";
       state.editing = 0;
     },
-
+    // Update user preferences with data from localStorage (in init) or Prefs panel component
     updatePrefs: (state, data) => {
-      if(data.darkMode) {
+      if (data.darkMode) {
         state.prefs.darkMode = data.darkMode;
       }
 
-      localStorage.setItem('prefs', JSON.stringify(data));
+      localStorage.setItem("prefs", JSON.stringify(data));
     },
 
     setMode: (state, mode) => {
       state.mode = mode;
     },
 
-    cancelEdit: (state) => {
-      state.mode = 'default';
+    cancelEdit: state => {
+      state.mode = "default";
       state.editing = 0;
     },
 
@@ -78,5 +81,17 @@ export const store = new Vuex.Store({
       state.mode = "edit";
     }
   },
-  actions: {}
+  actions: {
+    initialiseProjects({ commit }, data) {
+      const ENDPOINT = data.endpoint;
+      getJSON(ENDPOINT)
+        .then(data => {
+          const PROJECTS = data.Projects;
+          commit("updateProjectsList", PROJECTS);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
 });

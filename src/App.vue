@@ -21,8 +21,6 @@ import ProjectsList from "./components/ProjectsList/ProjectsList";
 import ProjectEditor from "./components/ProjectEditor/ProjectEditor";
 import DisplayPrefs from "./components/DisplayPrefs/DisplayPrefs";
 
-import { getJSON } from './modules/Ajax';
-
 export default {
   name: 'app',
   components: {
@@ -38,17 +36,11 @@ export default {
     }
   },
   methods: {
+    // Get project data from server via Ajax, and use it to initalise the projects in the store
     getProjectsFromServer: function () {
-      const ENDPOINT = "http://jboyd.wip.gd/remote-data/vue-projects-dashboard.json"
-
-      getJSON(ENDPOINT)
-      .then(data => {
-        const PROJECTS = data.Projects;
-        this.$store.commit('updateProjectsList', PROJECTS);
+      this.$store.dispatch('initialiseProjects', {
+        endpoint: 'http://jboyd.wip.gd/remote-data/vue-projects-dashboard.json'
       })
-      .catch((err) => {
-        console.log(err);
-      });
     },
     // Get preferences stored in localStorage and use these to update the central prefs state
     getPreferences: function () {
