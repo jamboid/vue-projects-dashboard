@@ -60,8 +60,8 @@ export const store = new Vuex.Store({
     },
     // Update user preferences with data from localStorage (in init) or Prefs panel component
     updatePrefs: (state, data) => {
-      if (data.darkMode) {
-        state.prefs.darkMode = data.darkMode;
+      if (data.toggle) {
+        state.prefs.toggle = data.toggle;
       }
 
       localStorage.setItem("prefs", JSON.stringify(data));
