@@ -14,6 +14,7 @@
 </template>
 
 <script>
+
 import PageSection from "./components/PageSection/PageSection";
 import Logo from "./components/Logo/Logo";
 import ProjectsList from "./components/ProjectsList/ProjectsList";
@@ -38,18 +39,18 @@ export default {
   },
   methods: {
     getProjectsFromServer: function () {
-      const endpoint = "http://jboyd.wip.gd/remote-data/vue-projects-dashboard.json"
+      const ENDPOINT = "http://jboyd.wip.gd/remote-data/vue-projects-dashboard.json"
 
-      getJSON(endpoint)
+      getJSON(ENDPOINT)
       .then(data => {
-        const projects = data.Projects;
-        this.$store.commit('updateProjectsList', projects);
+        const PROJECTS = data.Projects;
+        this.$store.commit('updateProjectsList', PROJECTS);
       })
       .catch((err) => {
         console.log(err);
       });
     },
-
+    // Get preferences stored in localStorage and use these to update the central prefs state
     getPreferences: function () {
       if(localStorage.prefs) {
         this.$store.commit('updatePrefs', JSON.parse(localStorage.prefs));
