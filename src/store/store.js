@@ -11,7 +11,7 @@ export const store = new Vuex.Store({
     editing: 0,
     projects: [],
     prefs: {
-      darkMode: false
+      toggle: false
     }
   },
   getters: {
