@@ -19,7 +19,6 @@ import Button from "../FormButton/FormButton.vue";
 import TextField from "../FormTextField/FormTextField.vue";
 import TextArea from "../FormTextArea/FormTextArea.vue";
 import FormMixin from '../../mixins/form';
-
 import { required } from 'vuelidate/lib/validators';
 
 export default {
@@ -79,13 +78,13 @@ export default {
   },
   methods: {
     updateFormData: function () {
-      const allProjects = this.$store.getters.allProjects;
-      const currentlyEditing = this.$store.getters.editing;
+      const ALL_PROJECTS = this.$store.getters.allProjects;
+      const CURRENTLY_EDITING = this.$store.getters.editing;
       let projectToEdit;
 
-      if(allProjects.length > 0) {
-        projectToEdit = allProjects.find(function(project) {
-          return project.number === currentlyEditing;
+      if(ALL_PROJECTS.length > 0) {
+        projectToEdit = ALL_PROJECTS.find(function(project) {
+          return project.number === CURRENTLY_EDITING;
         });
 
         if(projectToEdit) {

@@ -17,6 +17,16 @@
     } 
   }
 
+  &--footer {
+    justify-content: flex-end;
+    flex-grow: 1;
+    display: flex; 
+
+    #{ $self }__inner {
+      flex-grow:1; 
+    }
+  }
+
   .logo {
     grid-column: span 12;
   }

@@ -1,0 +1,30 @@
+<template>
+  <form class="cp_DisplayPrefs" v-on:change.prevent=updatePrefs>
+    <FormCheckbox v-model="prefs.darkMode" id="checktest" label="Dark Mode" :status="null"></FormCheckbox>
+  </form>
+</template>
+
+<script>
+import FormCheckbox from "../FormCheckbox/FormCheckbox";
+
+export default {
+  name: "DisplayPrefs",
+  components: {
+    FormCheckbox
+  },
+  computed: {
+    prefs () {
+      return this.$store.getters.prefs;
+    },
+  },
+  methods: {
+    updatePrefs: function () {
+      this.$store.commit('updatePrefs', this.prefs);
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+  @import 'DisplayPrefs.scss';
+</style>

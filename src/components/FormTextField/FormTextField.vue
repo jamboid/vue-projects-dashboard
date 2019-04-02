@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "TextField",
+  name: "FormTextField",
   props: {
     id: {
       type:String,

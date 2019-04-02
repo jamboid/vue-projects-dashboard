@@ -8,17 +8,27 @@ export const store = new Vuex.Store({
     mode: 'default', // 'default' or 'edit'
     editing: 0,
     projects: [],
+    prefs: {
+      darkMode: false
+    }
   },
   getters: {
     allProjects: state => {
       return state.projects;
     },
+
+    prefs: state => {
+      return state.prefs;
+    },
+
     mode: state => {
       return state.mode;
     },
+
     editing: state => {
       return state.editing;
     },
+
     projectDetails: state => {
       state.projects.forEach(function(project) {
         if (project.number === state.editing) {
@@ -31,26 +41,38 @@ export const store = new Vuex.Store({
     updateProjectsList: (state, data) => {
       state.projects = data;
     },
+
     updateProject: (state, data) => {
-      const projectToUpdate = state.projects.find(function(project){
+      const PROJECT_TO_UPDATE = state.projects.find(function(project){
         return project.number === data.number;
       });
 
-      projectToUpdate.name = data.name;
-      projectToUpdate.client = data.client;
-      projectToUpdate.description = data.description;
-      projectToUpdate.owner = data.owner;
+      PROJECT_TO_UPDATE.name = data.name;
+      PROJECT_TO_UPDATE.client = data.client;
+      PROJECT_TO_UPDATE.description = data.description;
+      PROJECT_TO_UPDATE.owner = data.owner;
 
       state.mode = 'default';
       state.editing = 0;
     },
+
+    updatePrefs: (state, data) => {
+      if(data.darkMode) {
+        state.prefs.darkMode = data.darkMode;
+      }
+
+      localStorage.setItem('prefs', JSON.stringify(data));
+    },
+
     setMode: (state, mode) => {
       state.mode = mode;
     },
+
     cancelEdit: (state) => {
       state.mode = 'default';
       state.editing = 0;
     },
+
     editProject: (state, projectNumber) => {
       state.editing = projectNumber;
       state.mode = "edit";

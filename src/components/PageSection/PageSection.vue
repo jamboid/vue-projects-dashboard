@@ -1,6 +1,6 @@
 <template>
-  <section :class="getSectionClass()" class="pageSection" >
-    <div :class="['pageSection__inner', 'gd_' + gridType]">
+  <section :class="sectionClass" class="pageSection" >
+    <div :class="[innerClass, 'pageSection__inner', 'gd_' + gridType]">
       <slot></slot>
     </div>
   </section>
@@ -19,15 +19,24 @@ export default {
       required: false
     }
   },
-  methods: {
-    getSectionClass: function() {
+  computed: {
+    sectionClass () {
       let classString = "";
       if (this.sectionType) {
         classString += 'pageSection--' + this.sectionType;
       }
-
+      return classString;
+    },
+    innerClass () {
+      let classString = "";
+      if (this.sectionType) {
+        classString += 'pageSection__inner--' + this.sectionType;
+      }
       return classString;
     }
+  },
+  methods: {
+
   }
 }
 </script>
