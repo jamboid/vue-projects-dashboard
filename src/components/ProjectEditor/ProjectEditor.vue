@@ -15,11 +15,12 @@
 </template>
 
 <script>
-import Button from "../FormButton/FormButton.vue";
-import TextField from "../FormTextField/FormTextField.vue";
-import TextArea from "../FormTextArea/FormTextArea.vue";
-import FormMixin from '../../mixins/form';
+import Button from "@/components/FormButton/FormButton.vue";
+import TextField from "@/components/FormTextField/FormTextField.vue";
+import TextArea from "@/components/FormTextArea/FormTextArea.vue";
+import FormMixin from '@/mixins/form';
 import { required } from 'vuelidate/lib/validators';
+import { mapGetters } from 'vuex'
 
 export default {
   name: "ProjectEditor",
@@ -57,29 +58,19 @@ export default {
     }
   },
   computed: {
-    mode() {
-      return this.$store.getters.mode;
-    },
-    projectNumber() {
-      return this.$store.getters.editing;
-    },
-    isVisible: function () {
-      return this.$store.getters.mode === 'edit' ? true : false;
-    }
-  },
-  watch: {
-    isVisible: function () {
-      if(this.isVisible) {
-        this.updateFormData();
-      } else {
-        this.clearForm();
-      }
+    ...mapGetters({
+      mode: 'mode',
+      projectNumber: 'editing',
+      allProjects: 'allProjects'
+    }),
+    isVisible () {
+      return this.mode === 'edit' ? true : false;
     }
   },
   methods: {
     updateFormData: function () {
-      const ALL_PROJECTS = this.$store.getters.allProjects;
-      const CURRENTLY_EDITING = this.$store.getters.editing;
+      const ALL_PROJECTS = this.allProjects;
+      const CURRENTLY_EDITING = this.projectNumber;
       let projectToEdit;
 
       if(ALL_PROJECTS.length > 0) {
@@ -118,10 +109,14 @@ export default {
       this.$store.commit('cancelEdit');
     }
   },
-  mounted: function () {
+  updated: function () {
     this.$nextTick(function () {
-      this.updateFormData();
-    })
+      if(this.isVisible) {
+        this.updateFormData();
+      } else {
+        this.clearForm();
+      }
+    });
   }
 }
 </script>

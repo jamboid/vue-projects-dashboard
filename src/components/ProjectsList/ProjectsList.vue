@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ProjectCard from "../ProjectCard/ProjectCard.vue";
+import ProjectCard from "@/components/ProjectCard/ProjectCard.vue";
 
 export default {
   name: "ProjectsList",

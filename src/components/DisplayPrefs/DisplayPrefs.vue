@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import FormCheckbox from "../FormCheckbox/FormCheckbox";
+import FormCheckbox from "@/components/FormCheckbox/FormCheckbox";
 
 export default {
   name: "DisplayPrefs",

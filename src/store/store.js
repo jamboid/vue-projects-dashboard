@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { getJSON } from "../modules/Ajax";
+import { getJSON } from "@/modules/Ajax";
 
 Vue.use(Vuex);
 

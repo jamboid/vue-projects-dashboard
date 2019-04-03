@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import EditIcon from './icon_edit.svg';
+import EditIcon from '@/components/ProjectCard/icon_edit.svg';
 
 export default {
   name:"ProjectCard",

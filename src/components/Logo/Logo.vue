@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import AppLogo from './projects-dashboard-icon.svg';
+import AppLogo from '@/components/Logo/projects-dashboard-icon.svg';
 
 export default {
   name: "Logo",

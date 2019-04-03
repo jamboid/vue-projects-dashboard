@@ -1,3 +1,3 @@
-import { getJSON } from "./getJSONFromAPI";
+import { getJSON } from "@/modules/Ajax/getJSONFromAPI";
 
 export { getJSON };

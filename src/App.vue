@@ -15,11 +15,11 @@
 
 <script>
 
-import PageSection from "./components/PageSection/PageSection";
-import Logo from "./components/Logo/Logo";
-import ProjectsList from "./components/ProjectsList/ProjectsList";
-import ProjectEditor from "./components/ProjectEditor/ProjectEditor";
-import DisplayPrefs from "./components/DisplayPrefs/DisplayPrefs";
+import PageSection from "@/components/PageSection/PageSection";
+import Logo from "@/components/Logo/Logo";
+import ProjectsList from "@/components/ProjectsList/ProjectsList";
+import ProjectEditor from "@/components/ProjectEditor/ProjectEditor";
+import DisplayPrefs from "@/components/DisplayPrefs/DisplayPrefs";
 
 export default {
   name: 'app',
@@ -29,11 +29,6 @@ export default {
     ProjectsList,
     ProjectEditor,
     DisplayPrefs
-  },
-  data: function () {
-    return {
-
-    }
   },
   methods: {
     // Get project data from server via Ajax, and use it to initalise the projects in the store

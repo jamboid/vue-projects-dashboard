@@ -1,6 +1,6 @@
-import handleError from "./handleFetchResponseError";
-import handleStatus from "./handleFetchResponseStatus";
-import { handleJSON } from "./handleFetchResponseContentTypes";
+import handleError from "@/modules/Ajax/handleFetchResponseError";
+import handleStatus from "@/modules/Ajax/handleFetchResponseStatus";
+import { handleJSON } from "@/modules/Ajax/handleFetchResponseContentTypes";
 
 /**
  * Abstract Ajax Get function
