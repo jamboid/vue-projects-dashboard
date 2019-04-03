@@ -21,14 +21,16 @@ export default {
       required: true
     },
     value: {
-      type:Boolean
+      type:Boolean,
+      required: false
     },
     label: {
       type: String,
       required: true
     },
     status: {
-      type: String
+      type: String,
+      required: false
     }
   }
 }
