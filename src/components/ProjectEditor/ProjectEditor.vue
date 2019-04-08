@@ -68,6 +68,15 @@ export default {
       return this.mode === 'edit' ? true : false;
     }
   },
+  watch: {
+    isVisible: function () {
+      if(this.isVisible) {
+        this.updateFormData();
+      } else {
+        this.clearForm();
+      }
+    }
+  },
   methods: {
     updateFormData: function () {
       const ALL_PROJECTS = this.allProjects;
@@ -109,15 +118,6 @@ export default {
       e.preventDefault();
       this.$store.commit('cancelEdit');
     }
-  },
-  updated: function () {
-    this.$nextTick(function () {
-      if(this.isVisible) {
-        this.updateFormData();
-      } else {
-        this.clearForm();
-      }
-    });
   }
 }
 </script>
