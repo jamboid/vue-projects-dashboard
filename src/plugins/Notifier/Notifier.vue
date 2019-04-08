@@ -1,9 +1,7 @@
 <template>
   <div class="cp_Notifier">
     <div class="cp_Notifier__messages">
-      <div class="cp_Notifier__message" v-for="message in messages" :key="message.id">
-        <h3 class="cp_Notifier__title">{{message.id}}: {{ message.body }}</h3>
-      </div>
+      <Notification v-for="message in messages" :key="message.id"></Notification>
     </div>
   </div>
 </template>
@@ -11,6 +9,7 @@
 <script>
 import { events } from './events';
 import defaults from './defaults';
+import Notification from './Notification.vue';
 
 const STATE = {
   IDLE: 0,

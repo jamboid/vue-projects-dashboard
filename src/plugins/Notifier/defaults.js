@@ -1,3 +1,3 @@
 export default {
-  delay: 3000
+  delay: 10000
 }

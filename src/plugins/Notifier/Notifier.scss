@@ -1,16 +1,32 @@
 .cp_Notifier {
   grid-column: span 12;
   margin:1vw 0;
+  position: relative;
+
+  &__messages {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
 
   &__message {    
-    padding:em(20) em(20) em(20) em(60);
+    padding:em(20);
     background:$clrWhite;
     border-radius:5px;
     box-shadow:0 3px 4px rgba($clrBlack,0.1);
     background:$clrBlue;
     color:$clrWhite;
-    transition:background-color $timeLongLink;
     margin-bottom: 1em;
+
+    &.fade-enter-active, &.fade-leave-active {
+      transition: all $timeLongLink;
+    }
+
+    &.fade-enter, &.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+      opacity: 0;
+    }
 
     &--inProgress {
       background:$clrBlue;
