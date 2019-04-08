@@ -63,6 +63,7 @@ export default {
       projectNumber: 'editing',
       allProjects: 'allProjects'
     }),
+
     isVisible () {
       return this.mode === 'edit' ? true : false;
     }

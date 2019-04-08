@@ -18,7 +18,9 @@
     padding:em(10,18);
     font-weight: $medium;
     width: 100%;
-    height:100px;
+    max-width:100%;
+    min-width:100%;
+    height:150px;
     border-radius:6px; 
     border:1px solid $clrVeryLightGrey;
   }

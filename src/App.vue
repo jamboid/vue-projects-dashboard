@@ -8,6 +8,7 @@
       <ProjectEditor></ProjectEditor>
     </PageSection>
     <PageSection sectionType="footer" gridType="Base">
+      <StatusBar mode="loading" messageTitle="Projects loading..."></StatusBar>
       <DisplayPrefs></DisplayPrefs>
     </PageSection>
   </div>
@@ -20,6 +21,7 @@ import Logo from "@/components/Logo/Logo";
 import ProjectsList from "@/components/ProjectsList/ProjectsList";
 import ProjectEditor from "@/components/ProjectEditor/ProjectEditor";
 import DisplayPrefs from "@/components/DisplayPrefs/DisplayPrefs";
+import StatusBar from "@/components/StatusBar/StatusBar";
 
 export default {
   name: 'app',
@@ -28,7 +30,8 @@ export default {
     Logo,
     ProjectsList,
     ProjectEditor,
-    DisplayPrefs
+    DisplayPrefs,
+    StatusBar
   },
   methods: {
     // Get project data from server via Ajax, and use it to initalise the projects in the store

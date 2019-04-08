@@ -22,7 +22,7 @@
     left: 0;
     visibility: hidden;
 
-    ~ label {
+    + label {
       transition: all 0.1s linear;
 
       &:before,
@@ -57,7 +57,7 @@
     }
 
     &:checked {
-      ~ label {
+      + label {
 
         &:after {
           background: $clrBlue;
