@@ -112,6 +112,7 @@ export default {
       }
 
       this.$store.commit('updateProject', this.project);
+      this.$notify({message: 'Project saving...'});
     },
 
     cancelEdit: function (e) {

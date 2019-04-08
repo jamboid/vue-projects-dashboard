@@ -2,19 +2,25 @@
   $self: &;
 
   &__inner {
-    padding:0 5vw;
-    max-width:em(1600);
-    margin:0 auto;
+    &--main,
+    &--footer,
+    &--status {
+      max-width:em(1600);
+      margin:0 auto;
+    }
+
+    &--main {
+      padding:5vw;
+    }
+
+    &--status,
+    &--footer {
+      padding:0 5vw;
+    }
   }
 
   &--header {
     background:$clrWhite;
-  }
-
-  &--main {
-    #{ $self }__inner {
-      padding:5vw;
-    } 
   }
 
   &--footer {

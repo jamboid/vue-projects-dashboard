@@ -1,0 +1,38 @@
+.cp_Notifier {
+  grid-column: span 12;
+  margin:1vw 0;
+
+  &__message {    
+    padding:em(20) em(20) em(20) em(60);
+    background:$clrWhite;
+    border-radius:5px;
+    box-shadow:0 3px 4px rgba($clrBlack,0.1);
+    background:$clrBlue;
+    color:$clrWhite;
+    transition:background-color $timeLongLink;
+    margin-bottom: 1em;
+
+    &--inProgress {
+      background:$clrBlue;
+    }
+
+    &--success {
+      background:$clrGreen;
+    }
+
+    &--failure {
+      background:$clrRed;
+    }
+  }
+
+  &__title {
+    font-size:em(24);
+    font-weight: $bold;
+  }
+
+  &__body {
+    max-width:em(600);
+    font-size:em(18);
+    line-height: 1.3;
+  }
+}
