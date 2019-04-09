@@ -12,7 +12,8 @@ export const store = new Vuex.Store({
     projects: [],
     prefs: {
       toggle: false
-    }
+    },
+    ticketNumber: 0
   },
   getters: {
     allProjects: state => {
@@ -37,6 +38,10 @@ export const store = new Vuex.Store({
           return project;
         }
       });
+    },
+
+    ticketNumber: state => {
+      return state.ticketNumber;
     }
   },
   mutations: {
@@ -44,6 +49,7 @@ export const store = new Vuex.Store({
     updateProjectsList: (state, data) => {
       state.projects = data;
     },
+
     // Update a specific project with new data from editor
     updateProject: (state, data) => {
       const PROJECT_TO_UPDATE = state.projects.find(function(project) {
@@ -58,6 +64,7 @@ export const store = new Vuex.Store({
       state.mode = "default";
       state.editing = 0;
     },
+
     // Update user preferences with data from localStorage (in init) or Prefs panel component
     updatePrefs: (state, data) => {
       if (data.toggle) {
@@ -79,6 +86,10 @@ export const store = new Vuex.Store({
     editProject: (state, projectNumber) => {
       state.editing = projectNumber;
       state.mode = "edit";
+    },
+
+    nextTicket: state => {
+      state.ticketNumber++;
     }
   },
   actions: {
@@ -92,6 +103,22 @@ export const store = new Vuex.Store({
         .catch(err => {
           console.log(err);
         });
+    },
+
+    saveProjectChanges({commit}, data) {
+      // Get the current
+      const NEW_TICKET = this.getters.ticketNumber;
+      data.vm.$notify({ message: 'Project saving...', ticket: NEW_TICKET});
+      this.commit('nextTicket');
+
+      // TODO: Replace this fakey timeout with an Ajax POST
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          commit("updateProject", data);
+          data.vm.$notify({ ticket: NEW_TICKET });
+          resolve();
+        }, 2000);
+      })
     }
   }
 });

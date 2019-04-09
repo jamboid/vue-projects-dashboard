@@ -1,7 +1,7 @@
 <template>
   <div class="cp_Notifier">
     <div class="cp_Notifier__messages">
-      <Notification v-for="message in messages" :key="message.id"></Notification>
+      <Notification v-for="message in messages" :messageBody="message.body" :key="message.id"></Notification>
     </div>
   </div>
 </template>
@@ -18,10 +18,12 @@ const STATE = {
 
 export default {
   name: 'Notifier',
+  components: {
+    Notification
+  },
   data () {
     return {
-      messages: [],
-      count: 0
+      messages: []
     }
   },
   props: {
@@ -32,26 +34,36 @@ export default {
   },
   methods: {
     addMessage: function (event) {
-
-      console.log(event.params.message);
-
       let message = {
-        id: this.count,
+        id: event.params.ticket,
         body: event.params.message,
         state: STATE.IDLE,
+        killDelay: event.params.delay
       }
 
       // Build notication object and push it into the messages array to update
       this.messages.push(message);
 
       // TODO: Add conditional for timer mode
-      message.timer = setTimeout(() => {
-        console.log('destroy message');
-        this.destroy(message);
-      }, defaults.delay);
+      // if(message.killDelay) {
+      //   message.timer = setTimeout(() => {
+      //     console.log('destroy message');
+      //     this.destroy(message);
+      //   }, defaults.delay);
+      // }
 
       // TODO: Can this (using a count for the id on the list) be done better? Not sure...
-      this.count++;
+
+    },
+
+    killMessage: function (data) {
+
+      const TICKET_NUM = data.ticket;
+      const MESSAGE_TO_KILL = this.messages.find(function(element) {
+        return element.id === TICKET_NUM;
+      });
+
+      this.destroy(MESSAGE_TO_KILL);
     },
 
     destroy: function (message) {
@@ -66,6 +78,7 @@ export default {
   },
   mounted () {
     events.$on('add', this.addMessage);
+    events.$on('kill', this.killMessage);
   },
 }
 </script>

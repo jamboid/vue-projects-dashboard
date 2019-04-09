@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div class="cp_Notification">
-      <h3 class="cp_Notification__title">{{message.id}}: {{ message.body }}</h3>
+      <h3 class="cp_Notification__title">{{ messageBody }}</h3>
     </div>
   </transition>
 </template>
@@ -15,7 +15,9 @@ export default {
     }
   },
   props: {
-
+    messageBody: {
+      type: String
+    }
   },
   methods: {
 

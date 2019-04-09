@@ -38,7 +38,8 @@ export default {
         description: '',
         client: '',
         owner: '',
-      }
+      },
+      active: false,
     }
   },
   validations: {
@@ -61,19 +62,26 @@ export default {
     ...mapGetters({
       mode: 'mode',
       projectNumber: 'editing',
-      allProjects: 'allProjects'
+      allProjects: 'allProjects',
+      ticket: 'ticketNumber'
     }),
 
     isVisible () {
       return this.mode === 'edit' ? true : false;
+    },
+
+    isActive () {
+      return this.active;
     }
   },
   watch: {
     isVisible: function () {
       if(this.isVisible) {
+        this.active = true;
         this.updateFormData();
       } else {
         this.clearForm();
+        this.active = false;
       }
     }
   },
@@ -94,6 +102,7 @@ export default {
           this.project.client = projectToEdit.client;
           this.project.owner = projectToEdit.owner;
           this.project.description = projectToEdit.description;
+          this.project.vm = this;
         }
       }
     },
@@ -104,21 +113,29 @@ export default {
       this.project.client = '';
       this.project.owner = '';
       this.project.description = '';
+      this.project.vm = null;
     },
 
     handleFormSubmit: function () {
-      if(this.$v.$anyError) {
-        return
+      if(this.$v.$anyError || !this.isActive) {
+        return;
       }
 
-      this.$store.commit('updateProject', this.project);
-      this.$notify({message: 'Project saving...'});
+      this.active = false;
+
+      //this.$store.commit('updateProject', this.project);
+      this.$store.dispatch('saveProjectChanges', this.project).then(() => {
+        this.active = true;
+      });
     },
 
     cancelEdit: function (e) {
       e.preventDefault();
-      this.$store.commit('cancelEdit');
-    }
+
+      if(this.isActive) {
+        this.$store.commit('cancelEdit');
+      }
+    },
   }
 }
 </script>
