@@ -57,7 +57,6 @@ export default {
     },
 
     killMessage: function (data) {
-
       const TICKET_NUM = data.ticket;
       const MESSAGE_TO_KILL = this.messages.find(function(element) {
         return element.id === TICKET_NUM;
@@ -66,12 +65,14 @@ export default {
       this.destroy(MESSAGE_TO_KILL);
     },
 
+    // Set the message's state to DESTROYED then call the clean function to flush this from the list
     destroy: function (message) {
       clearTimeout(message.timer);
       message.state = STATE.DESTROYED;
       this.clean();
     },
 
+    // Removes all messages with state set to DESTROYED
     clean: function () {
       this.messages = this.messages.filter(v => v.state !== STATE.DESTROYED)
     }

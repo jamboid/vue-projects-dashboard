@@ -1,4 +1,6 @@
 .cp_ProjectEditor {
+  $self: &;
+
   grid-column: 7 / span 6;
   grid-row:1;
   padding:em(20);
@@ -23,5 +25,11 @@
 
   &.fade-enter, &.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
+  }
+
+  &--inactive {
+    #{ $self }__formActions {
+      opacity:0.5;
+    }
   }
 }

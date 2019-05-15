@@ -106,7 +106,6 @@ export const store = new Vuex.Store({
     },
 
     saveProjectChanges({commit}, data) {
-      // Get the current
       const NEW_TICKET = this.getters.ticketNumber;
       data.vm.$notify({ message: 'Project saving...', ticket: NEW_TICKET});
       this.commit('nextTicket');
