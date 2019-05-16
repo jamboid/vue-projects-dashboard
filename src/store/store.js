@@ -97,7 +97,7 @@ export const store = new Vuex.Store({
       const ENDPOINT = data.endpoint;
       getJSON(ENDPOINT)
         .then(data => {
-          const PROJECTS = data.Projects;
+          const PROJECTS = data.projects;
           commit("updateProjectsList", PROJECTS);
         })
         .catch(err => {
